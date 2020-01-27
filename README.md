@@ -76,6 +76,7 @@ This model had tendancy to mark any unseen words as Destination.
 Models were evaluated on parameters recall, precision of only "Destination" tagged entities.
 
 Model 1 : Recall:90.66 Precision:98.5 F-score: 94.41
+
 Model 2 : Recall:93.73 Precision:100 F-score: 96.76
 
 
