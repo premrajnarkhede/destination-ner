@@ -11,6 +11,7 @@ from keras.models import Model, Input
 from keras.layers import LSTM, Embedding, Dense, TimeDistributed, Dropout, Bidirectional
 from keras_contrib.layers import CRF
 import keras
+from keras_contrib.utils import save_load_utils
 
 def pred2label(pred):
     out = []
@@ -69,5 +70,5 @@ if __name__ == "__main__":
     test_labels = pred2label(y_te)
     print("Recall, Precision and F-score are",
           get_recall_precision(test_labels, pred_labels, "Destination"))
-    model.save("BILSTM+CRF_without_pos_without_embeddings")
+    save_load_utils.save_all_weights(model,"BILSTM+CRF_without_pos_without_embeddings")
     
