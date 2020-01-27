@@ -71,12 +71,61 @@ This model had tendancy to mark any unseen words as Destination.
 
 3) Third model was using POS tags as well as pretrained Glove vectors. However it ended up giving results poorer than even model1. It required more fine tuning and hence not described here. You can see model structure in python notebook "With pretrained embeddings and pos tags.ipynb"
 
+## Evaluation
+
+Models were evaluated on parameters recall, precision of only "Destination" tagged entities.
+
+Model 1 : Recall:90.66 Precision:98.5 F-score: 94.41
+Model 2 : Recall:93.73 Precision:100 F-score: 96.76
+
 
 ## Deployment and outputs
+Model 2 is temporarily deployed at http://157.245.231.247:5005/model1/
+
+Usage send the sentence as parameter after "model1/"
+
+e.g.http://157.245.231.247:5005/model1/find%20me%20a%20police%20station%20quickly
+
+gets output {"destination":["police station"]}
+
+** Please convert ? to %3F in sentence
+
+text: Navigate me to Munich
+{"destination":["Munich"]}
+
+text: Take me to 34 Torstrasse
+{"destination":["34 Torstrasse"]}
+
+text: Destination my work
+{"destination":["my work"]}
+
+text: Drive me to my kids' play
+{"destination":["my kids ' play"]}
+
+text:"Find neareast starbucks and drive me there"
+{"destination":["starbucks","there"]}
+
+text:"Where do you want to go? Please dont bother"
+{"destination":[]}
+
+text:"Nearest book shop"
+{"destination":["book shop"]}
+
+text:"Where do you want to go? Checkpoint Charlie"
+{"destination":["Checkpoint charlie"]}
+
+text:"find me a "parking place" in "berlin mitte""
+{"destination":["place","berlin mitte"]}
 
 
 
 
-## Tests
 
-## Process followed
+
+
+
+
+
+
+## Process followed for training data enrichment
+
