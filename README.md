@@ -88,7 +88,10 @@ e.g.http://157.245.231.247:5005/model1/find%20me%20a%20police%20station%20quickl
 
 gets output {"destination":["police station"]}
 
+
+
 ** Please convert ? to %3F in sentence
+** Pass the context as a part of sentence itself e.g. Where do you want to to go%3F Alexanderplatz
 
 text: Navigate me to Munich
 {"destination":["Munich"]}
@@ -128,4 +131,13 @@ text:"find me a "parking place" in "berlin mitte""
 
 
 ## Process followed for training data enrichment
+
+Open source NLU datasets provided were scanned but it would have needed some automation to pickup some relevant dialogue exchanges.
+
+Many new phrases were discovered using following urls
+
+https://owner.ford.com/support/how-tos/sync-technology/sync-3/navigation/using-navigation-voice-commands-with-sync-3.html
+https://www.johnhiesterchevy.com/Navigation
+https://android.gadgethacks.com/how-to/navigate-hands-free-using-voice-commands-0166496/
+https://www.waze.com/forum/viewtopic.php?p=1312171
 
