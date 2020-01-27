@@ -40,10 +40,42 @@ This model had tendancy to mark any unseen words as Destination.
 
 2) Second model uses POS tags. POS tags have their own 10 dimension embeddings while rest of the details remained same.
 
+
+      Model: "model_2"
+      __________________________________________________________________________________________________
+      Layer (type)                    Output Shape         Param #     Connected to                     
+      ==================================================================================================
+      input_1 (InputLayer)            (None, 75)           0                                            
+      __________________________________________________________________________________________________
+      input_2 (InputLayer)            (None, 75)           0                                            
+      __________________________________________________________________________________________________
+      embedding_1 (Embedding)         (None, 75, 20)       1860        input_1[0][0]                    
+      __________________________________________________________________________________________________
+      embedding_2 (Embedding)         (None, 75, 10)       150         input_2[0][0]                    
+      __________________________________________________________________________________________________
+      concatenate_1 (Concatenate)     (None, 75, 30)       0           embedding_1[0][0]                
+                                                                       embedding_2[0][0]                
+      __________________________________________________________________________________________________
+      bidirectional_1 (Bidirectional) (None, 75, 100)      32400       concatenate_1[0][0]              
+      __________________________________________________________________________________________________
+      time_distributed_1 (TimeDistrib (None, 75, 50)       5050        bidirectional_1[0][0]            
+      __________________________________________________________________________________________________
+      crf_1 (CRF)                     (None, 75, 2)        110         time_distributed_1[0][0]         
+      ==================================================================================================
+      Total params: 39,570
+      Trainable params: 39,570
+      Non-trainable params: 0
+      __________________________________________________________________________________________________
+
+
+
 3) Third model was using POS tags as well as pretrained Glove vectors. However it ended up giving results poorer than even model1. It required more fine tuning and hence not described here. You can see model structure in python notebook "With pretrained embeddings and pos tags.ipynb"
 
 
-## Deployment
+## Deployment and outputs
+
+
+
 
 ## Tests
 
